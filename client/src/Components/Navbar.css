@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.navi{
+    background-color: black;
+}
+.navigation{
+   display: flex; 
+   text-align: center;
+}
+.cont{
+   font-size: 40px;
+   color: white; 
+   margin: 30px;
+   cursor: pointer;
+   text-decoration: none;
+}
+.cont:hover{
+   color: crimson; 
+}
+ 
