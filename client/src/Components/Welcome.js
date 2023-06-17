@@ -1,9 +1,9 @@
 import React from 'react'
-
+import './Welcome.css'
 const Welcome  = () => {
   return (
-    <div>
-      <h1>Welcome to my webpage</h1>  
+    <div className='welcome'>
+      <h1>WELCOME TO MY CRUD APP</h1> 
     </div>
   )
 }

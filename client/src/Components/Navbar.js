@@ -1,16 +1,32 @@
-import React from 'react'
-import './Navbar.css'
-import { NavLink } from 'react-router-dom'
-const Navbar = () => {
-  return ( 
-  <nav className='navi'>
-    <div className='navigation'>
-      <NavLink to="/" className='cont'>Home</NavLink> 
-      <NavLink to="/all" className='cont'>All Users</NavLink>
-      <NavLink to="/add" className='cont'>Add User</NavLink>
-    </div>
-  </nav>
-  )
+
+import { AppBar, Toolbar, styled } from '@mui/material';
+
+import { NavLink } from 'react-router-dom';
+
+
+const Header = styled(AppBar)`
+    background: #111111;
+    margin-left:0px;
+    margin-top:0px;
+    `;
+    
+const Tabs = styled(NavLink)`
+    color: #FFFFFF;
+    margin-right: 30px;
+    text-decoration: none;
+    font-size: 40px;
+`;
+
+const NavBar = () => {
+    return (
+        <Header position="static">
+            <Toolbar>
+                <Tabs to="./" exact>Home</Tabs>
+                <Tabs to="all" exact>All Users</Tabs>
+                <Tabs to="add" exact>Add User</Tabs>
+            </Toolbar>
+        </Header>
+    )
 }
 
-export default Navbar
+export default NavBar;

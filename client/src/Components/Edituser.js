@@ -1,17 +1,23 @@
 import React from 'react'
-import './Adduser.css'
 import { useState,useEffect } from 'react'
 import { getindiuser ,editUser} from '../service/Api'
 import {useNavigate,useParams} from 'react-router-dom'
+import {FormGroup,FormControl, InputLabel, Input, Button, styled, Typography } from '@mui/material';
  const defaultvalue={
       name:'',
       username:'',
       email:'',
       phone:''
     }
+    const Container = styled(FormGroup)`
+    width: 50%;
+    margin: 5% 0 0 25%;
+    & > div {
+        margin-top: 20px;
+`;
 const  Edituser = () => {
   const [user,setUser]=useState(defaultvalue);
-
+  const { name, username, email, phone } = user;
   const navigate=useNavigate();
   const {id}=useParams();
   useEffect(()=>{
@@ -22,7 +28,7 @@ const  Edituser = () => {
     const response=await getindiuser(id);
     setUser(response.data);
   }
-  const onvaluechange=(e)=>{
+  const onValueChange=(e)=>{
      setUser({...user,[e.target.name]:e.target.value});
      console.log(user);
     }
@@ -31,24 +37,28 @@ const  Edituser = () => {
       navigate('/all');
     }
   return (
-    <div className='adduser'>
-    <h1>Edit User-</h1>
-    <form >
-      <label>Name:</label>
-     <input onChange={(e)=>onvaluechange(e)} name="name" className='name' type="text" placeholder='Enter your Name' value={user.name}/>
-     <br/>
-     <label >UserName:</label>
-     <input onChange={(e)=>onvaluechange(e)} name="username" className='username' type="text" placeholder='Enter your UserName' value={user.username}/>
-     <br/>
-      <label >Email-Id:</label>
-     <input onChange={(e)=>onvaluechange(e)} name="email" className='email' type="email"  placeholder='Enter your Email-Id' value={user.email}/>
-     <br/>
-      <label >Contact No.:</label>
-     <input onChange={(e)=>onvaluechange(e)} name="phone" className='contact' type="number" placeholder='Enter your Contact Number' value={user.phone}/>
-     <br/>
-     <button type="submit" onClick={()=>editUserDetails()}>Edit User</button>
-    </form>
-    </div>
+     <Container>
+            <Typography variant="h4">Edit User -</Typography>
+            <FormControl>
+                <InputLabel htmlFor="my-input">Name</InputLabel>
+                <Input onChange={(e) => onValueChange(e)} name='name' value={name} id="my-input" />
+            </FormControl>
+            <FormControl>
+                <InputLabel htmlFor="my-input">Username</InputLabel>
+                <Input onChange={(e) => onValueChange(e)} name='username' value={username} id="my-input" />
+            </FormControl>
+            <FormControl>
+                <InputLabel htmlFor="my-input">Email</InputLabel>
+                <Input onChange={(e) => onValueChange(e)} name='email' value={email} id="my-input"/>
+            </FormControl>
+            <FormControl>
+                <InputLabel htmlFor="my-input">Phone</InputLabel>
+                <Input onChange={(e) => onValueChange(e)} name='phone' value={phone} id="my-input" />
+            </FormControl>
+            <FormControl>
+                <Button variant="contained" color="primary" onClick={() => editUserDetails()}>Add User</Button>
+            </FormControl>
+        </Container>
   )
 }
 

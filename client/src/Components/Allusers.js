@@ -3,7 +3,7 @@ import { getUsers,deleteSingleUser } from '../service/Api'
 import { Table, TableHead, TableCell, Paper, TableRow, TableBody, Button, styled } from '@mui/material'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { Link,useParams} from 'react-router-dom'
+import { Link} from 'react-router-dom'
 const StyledTable = styled(Table)`
     width: 90%;
     margin: 50px 0 0 50px;

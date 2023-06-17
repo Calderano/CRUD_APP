@@ -1,0 +1,11 @@
+.welcome{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: cadetblue;
+   margin:auto;
+   margin-top: 15%;
+   min-height:150px;
+   font-size: 30px;
+   font-weight: bold;
+}
